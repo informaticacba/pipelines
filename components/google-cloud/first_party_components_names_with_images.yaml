@@ -63,5 +63,19 @@ first_party_components_names_with_images:
   image: gcr.io/ml-pipeline/google-cloud-pipeline-components
 - name: wait_gcp_resources
   image: gcr.io/ml-pipeline/google-cloud-pipeline-components
-
-
+- name: AutoML Tabular CV Trainer
+  image: gcr.io/ml-pipeline/google-cloud-pipeline-components
+- name: AutoML Tabular Ensemble
+  image: gcr.io/ml-pipeline/google-cloud-pipeline-components
+- name: Tabular Feature Ranking and Selection
+  image: gcr.io/ml-pipeline/google-cloud-pipeline-components
+- name: AutoML Tabular Finalizer
+  image: gcr.io/ml-pipeline/google-cloud-pipeline-components
+- name: AutoML Tabular Infra Validator
+  image: gcr.io/ml-pipeline/google-cloud-pipeline-components
+- name: AutoML Tabular Stage 1 Tuner
+  image: gcr.io/ml-pipeline/google-cloud-pipeline-components
+- name: Tabular Stats and Example Gen
+  image: gcr.io/ml-pipeline/google-cloud-pipeline-components
+- name: AutoML Tabular Transform
+  image: gcr.io/ml-pipeline/google-cloud-pipeline-components
