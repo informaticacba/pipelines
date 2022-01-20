@@ -22,6 +22,7 @@ from . import batch_prediction_job_remote_runner
 from . import bigquery_job_remote_runner
 from . import create_endpoint_remote_runner
 from . import custom_job_remote_runner
+from . import dataproc_batch_remote_runner
 from . import delete_endpoint_remote_runner
 from . import deploy_model_remote_runner
 from . import export_model_remote_runner
@@ -57,6 +58,14 @@ _JOB_TYPE_TO_ACTION_MAP = {
         bigquery_job_remote_runner.bigquery_export_model_job,
     'BigqueryEvaluateModelJob':
         bigquery_job_remote_runner.bigquery_evaluate_model_job,
+    'SparkBatch':
+        dataproc_batch_remote_runner.create_spark_batch,
+    'PySparkBatch':
+        dataproc_batch_remote_runner.create_pyspark_batch,
+    'SparkRBatch':
+        dataproc_batch_remote_runner.create_spark_r_batch,
+    'SparkSqlBatch':
+        dataproc_batch_remote_runner.create_spark_sql_batch,
     'Wait':
         wait_gcp_resources.wait_gcp_resources
 }
@@ -166,6 +175,16 @@ def _parse_args(args):
       required=(parsed_args.type
                 in {'BigqueryPredictModelJob', 'BigQueryEvaluateModelJob'}),
       default=argparse.SUPPRESS)
+  parser.add_argument(
+      '--batch_id',
+      dest='batch_id',
+      type=str,
+      required=(parsed_args.type in {
+          'PySparkBatch', 'SparkBatch',
+          'SparkRBatch', 'SparkSqlBatch'
+      }),
+      default=argparse.SUPPRESS)
+
   parsed_args, _ = parser.parse_known_args(args)
   return vars(parsed_args)
 
